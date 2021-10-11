@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val viewModel: MainViewModel by viewModels()
+
         var num = 0
 
         findViewById<Button>(R.id.button).setOnClickListener {
@@ -24,10 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.button2).setOnClickListener {
-            // Start 5 second timer
-            Log.i("MainActivity", "Start 5 second timer")
-            Thread.sleep(5000)
-            Log.i("MainActivity", "5 second timer ended")
+            viewModel.startTimer()
         }
     }
 }
