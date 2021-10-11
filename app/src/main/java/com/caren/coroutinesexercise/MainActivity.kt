@@ -24,10 +24,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.button2).setOnClickListener {
-            // Start 5 second timer
-            Log.i("MainActivity", "Start 5 second timer")
-            Thread.sleep(5000)
-            Log.i("MainActivity", "5 second timer ended")
+            lifecycleScope.launch(Dispatchers.Default) {
+                // Start 5 second timer
+                Log.i("MainActivity", "Start 5 second timer")
+                Thread.sleep(5000)
+                Log.i("MainActivity", "5 second timer ended")
+            }
         }
     }
 }
